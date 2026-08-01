@@ -1,5 +1,9 @@
 // background
-import ParticlesComponent from "./Components/Background/particles";
+import { lazy, Suspense } from "react";
+
+const ParticlesComponent = lazy(() =>
+  import("./Components/Background/particles")
+);
 
 //Components
 import Header from "./Components/Header/Header";
@@ -13,7 +17,9 @@ import "./Styles/global.css";
 function App() {
   return (
     <>
-      <ParticlesComponent id="particles" />
+      <Suspense fallback={null}>
+        <ParticlesComponent id="particles" />
+      </Suspense>
       <Header />
       <Home />
       <Products />

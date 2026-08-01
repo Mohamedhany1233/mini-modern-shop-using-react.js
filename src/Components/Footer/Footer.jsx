@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer id="Footer" className="bg-[var(--black)] py-4">
-      <div className="md:max-w-[1400px] m-auto p-[40px] mx-auto px-4 flex items-center justify-between p-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row gap-6 items-center justify-between">
         <div
           id="footer-logo"
           className="flex items-center gap-2 cursor-pointer"

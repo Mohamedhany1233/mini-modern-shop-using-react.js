@@ -7,18 +7,19 @@ import ProductCard from "./ProductCard";
 import FadeInScroll from "../FadeOnScroll/FadeOnScroll";
 
 // Modals
-import ProductDetailsModal from "../Modals/productDetailsModal";
-import PaymentGatewayModal from "../Modals/PaymentGatewayModal";
+import { lazy, Suspense, useState } from "react";
+
+const ProductDetailsModal = lazy(() => import("../Modals/ProductDetailsModal"));
+const PaymentGatewayModal = lazy(() => import("../Modals/PaymentGatewayModal"));
 
 // contexts
 import { AllProductsContext } from "../../Contexts/AllProductsContext";
 import { ProductDetailsId } from "../../Contexts/ProductDetailsId";
 
 // others
-import { useState } from "react";
 
 export default function Products() {
-  const [products, setProducts] = useState([
+  const [products] = useState([
     // =========================
     // 🎮 GAME SERVERS
     // =========================
@@ -574,10 +575,9 @@ export default function Products() {
           setProductDetailsId: setProductDetailsId,
         }}
       >
-        <section id="Products" className="bg-[var(--black)]/30 overflow-hidden">
+        <section id="Products" className="bg-[var(--black)]/30 overflow-hidden px-4 sm:px-6 lg:px-8 pb-16">
           <div
-            id="Products"
-            className="md:max-w-[1400px]"
+            className="w-full max-w-[1400px]"
             style={{
               margin: "auto",
             }}
@@ -589,13 +589,14 @@ export default function Products() {
                 onChange={handleCategory}
                 aria-label="text alignment"
                 sx={{
-                  gap: "12px",
+                  gap: { xs: "8px", lg: "10px" },
                   display: "flex",
                   flexWrap: "wrap",
                   justifyContent: "center",
                   "& .MuiToggleButton-root": {
                     borderRadius: "3px",
-                    padding: "8px 20px",
+                    padding: { xs: "7px 12px", lg: "8px 16px", xl: "8px 20px" },
+                    fontSize: { xs: "0.72rem", lg: "0.78rem", xl: "0.8125rem" },
                     color: "var(--gray)",
                     bgcolor: "var(--dark)",
                     fontWeight: "bold",
@@ -635,28 +636,29 @@ export default function Products() {
             </div>
             <div
               style={{
-                marginTop: "60px",
+                marginTop: "48px",
               }}
-              className="flex w-full flex-col md:grid md:grid-cols-2 lg:grid-cols-3  justify-items-center justify-center items-center"
+              className="grid w-full grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-7 items-stretch"
             >
               {productsSeleted}
             </div>
           </div>
           {/* product details modal */}
-          <div>
-            <ProductDetailsModal
-              openModal={openModal}
-              setOpenModal={setOpenModal}
-              setOpenPaymentModal={setOpenPaymentModal}
-            />
-          </div>
-          {/* product details modal */}
-          <div>
-            <PaymentGatewayModal
-              openModal={openPaymentModal}
-              setOpenModal={setOpenPaymentModal}
-            />
-          </div>
+          <Suspense fallback={null}>
+            {openModal && (
+              <ProductDetailsModal
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+                setOpenPaymentModal={setOpenPaymentModal}
+              />
+            )}
+            {openPaymentModal && (
+              <PaymentGatewayModal
+                openModal={openPaymentModal}
+                setOpenModal={setOpenPaymentModal}
+              />
+            )}
+          </Suspense>
         </section>
       </ProductDetailsId.Provider>
     </AllProductsContext.Provider>

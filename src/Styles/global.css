@@ -1,16 +1,23 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;700&family=Rubik:wght@400;500;700;900&display=swap");
+
 /* tailwind */
 @import "tailwindcss";
 
-/* FONTS */
-@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+Thai:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-* {
+html {
   scroll-behavior: smooth;
+  background: var(--bg-linear-particles-1);
 }
 
 #root {
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: clip;
 }
 :root {
   --primary: #ff1a44;
@@ -31,10 +38,30 @@
 }
 
 #particles {
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 100%;
   position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+#root > :not(#particles) {
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--bg-linear-particles-1), var(--bg-linear-particles-2));
+}
+
+img,
+svg {
+  max-width: 100%;
 }
 
 h1,
@@ -53,6 +80,7 @@ h6 {
 
 section {
   padding-top: 60px;
+  scroll-margin-top: 80px;
 }
 
 /* ===== Custom Scrollbar ===== */
@@ -79,4 +107,25 @@ section {
   .homeContainer {
     margin-top: 90px;
   }
+}
+
+@media (max-width: 767px) {
+  #particles {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
 }

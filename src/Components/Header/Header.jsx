@@ -17,8 +17,8 @@ export default function Header() {
 
   return (
     <header id="Navbar">
-      <nav className="fixed w-full z-50 bg-black/10 backdrop-blur-md border-b-[2px] border-white/5 shadow-2xl">
-        <div className="md:max-w-[1400px] m-auto px-2  py-[10px] h-20 flex items-center justify-between">
+      <nav className="fixed w-full  z-200 bg-black/10 backdrop-blur-md border-b-[2px] border-white/5 shadow-2xl">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 h-20 flex items-center justify-between">
           <div
             id="logo"
             className="flex items-center gap-2 fade-right cursor-pointer"
@@ -50,7 +50,7 @@ export default function Header() {
           </div>
 
           <IconButton
-            aria-label="delete"
+            aria-label="Open navigation menu"
             color="primary"
             sx={{
               display: {

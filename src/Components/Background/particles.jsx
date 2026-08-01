@@ -13,20 +13,16 @@ const ParticlesComponent = (props) => {
     });
   }, []);
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
-
   const options = useMemo(
     () => ({
       background: {
         color: {
-          value: "#",
+          value: "transparent",
         },
         image:
           "linear-gradient(to bottom right, var(--bg-linear-particles-1), var(--bg-linear-particles-2)", // gradient من أعلى اليسار لتحت اليمين
       },
-      fpsLimit: 120,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
@@ -76,7 +72,7 @@ const ParticlesComponent = (props) => {
           value: 80,
         },
         opacity: {
-          value: 1.0,
+          value: 1,
         },
         shape: {
           type: "circle",
@@ -90,7 +86,9 @@ const ParticlesComponent = (props) => {
     []
   );
 
-  return <Particles id={props.id} init={particlesLoaded} options={options} />;
+  if (!init) return null;
+
+  return <Particles id={props.id} options={options} />;
 };
 
 export default ParticlesComponent;

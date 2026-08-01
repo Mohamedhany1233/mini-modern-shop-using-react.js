@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <main id="Home">
-        <div className="fade px-[20px] flex flex-col justify-center items-center min-h-[85vh] text-center gap-10 fade homeContainer">
+        <div className="fade max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 flex flex-col justify-center items-center min-h-[85svh] text-center gap-6 lg:gap-8 homeContainer">
           <div className="inline-flex items-center gap-0.5 py-[8px] px-[30px] rounded-full bg-white/5 border border-white/10 text-[var(--gold)] text-[0.75rem] font-[900] uppercase tracking-normal mb-[1rem]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default function Home() {
             </svg>
             Premium Market
           </div>
-          <div className="max-sm:text-md flex text-[39px] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 text-[var(--primary)]">
+          <div className="flex flex-wrap justify-center text-[clamp(2.35rem,7vw,6rem)] font-black tracking-tighter leading-none mb-2 text-[var(--primary)]">
             <h1 className="uppercase drop-shadow-[0_0_3px_var(--primary)]">
               Megatron
             </h1>
@@ -41,7 +41,7 @@ export default function Home() {
           <p className="text-[var(--secondary)] font-mono text-[13px] md:text-sm tracking-widest uppercase opacity-80 fade">
             Instant Delivery • 100% Anonymous • FIRE20 Only
           </p>
-          <div className="md:flex max-sm:w-full md:flex-row gap-5 flex flex-col">
+          <div className="flex w-full sm:w-auto flex-col sm:flex-row gap-4 sm:gap-5">
             <Button
               href="#"
               sx={{

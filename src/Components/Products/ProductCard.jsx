@@ -17,8 +17,7 @@ export default function ProductCard({ id, price, title, specs, setOpenModal }) {
     setOpenModal(true);
   }
 
-  const { productDetailsId, setProductDetailsId } =
-    useContext(ProductDetailsId);
+  const { setProductDetailsId } = useContext(ProductDetailsId);
 
   function dispatchId() {
     setProductDetailsId(id);
@@ -27,7 +26,7 @@ export default function ProductCard({ id, price, title, specs, setOpenModal }) {
   return (
     <div
       id="productCard"
-      className="w-full p-[24px] rounded-[16px] mb-[30px] shadow-2xl transition relative overflow-hidden border border-[var(rgba(255, 255, 255, 0.08))]  hover:border-[var(--secondary)] bg-[var(--card-color)] backdrop-blur-sm hover:translate-y-[-10px] transition-all duration-300 group "
+      className="h-full w-full p-5 xl:p-6 rounded-2xl shadow-xl relative overflow-hidden border border-white/10 hover:border-[var(--secondary)] bg-[var(--card-color)] hover:-translate-y-1 transition-[transform,border-color,box-shadow] duration-200 group"
     >
       <div className="absolute top-0 left-0 h-[4px] right-0 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]" />
 

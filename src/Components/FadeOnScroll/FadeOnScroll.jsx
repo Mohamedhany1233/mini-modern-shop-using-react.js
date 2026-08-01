@@ -25,10 +25,10 @@ export default function FadeOnScroll({ children }) {
   return (
     <div
       ref={ref}
-      className={`w-[90%]  transition-all duration-700 ease-out transform ${
+      className={`w-full min-w-0 transition-[opacity,transform] duration-500 ease-out ${
         isVisible
           ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-10 max-w-[450px] "
+          : "opacity-0 translate-y-6"
       }`}
     >
       {children}
